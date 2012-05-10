@@ -26,12 +26,13 @@ files.each do |name|
       end
   end
 end
-
+puts "dir END"
 files = Dir::entries(local_dir)
 files.each do |name|
   if FileTest::directory?(name) && name != ".." && name != "."
     dump_file = Dir::entries("#{local_dir}/#{name}")
     dump_file.each do |d|
+      p d
       Net::SCP.start(host, id, options) do |scp|
         scp.upload!("#{local_dir}/#{name}/#{d}",remote_dir)
       end
