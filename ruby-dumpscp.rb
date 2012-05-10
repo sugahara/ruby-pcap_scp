@@ -29,6 +29,7 @@ end
 puts "dir END"
 files = Dir::entries(local_dir)
 files.each do |name|
+  p name
   if FileTest::directory?(name) && name != ".." && name != "."
     dump_file = Dir::entries("#{local_dir}/#{name}")
     dump_file.each do |d|
