@@ -1,7 +1,8 @@
 require 'net/ssh'
 require 'net/scp'
-
-local_dir = ARGV[0]
+if ARGV[0][ARGV[0].size-1] == "/"
+  local_dir = ARGV[0].chop
+end
 remote_dir = ARGV[1]
 host = ARGV[2]
 id = ARGV[3]
