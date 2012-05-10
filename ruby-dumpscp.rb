@@ -45,6 +45,6 @@ files.each do |name|
         FileUtils.rm("#{local_dir}/#{name}/#{d}")
       end
     end
+    FileUtils.rmdir("#{local_dir}/#{name}")
   end
-  FileUtils.rmdir("#{local_dir}/#{name}")
 end
