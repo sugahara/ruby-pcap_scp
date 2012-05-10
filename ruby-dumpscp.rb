@@ -49,4 +49,3 @@ files.each do |name|
   end
   FileUtils.rmdir("#{local_dir}/#{name}")
 end
-
