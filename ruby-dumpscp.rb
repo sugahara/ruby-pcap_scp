@@ -35,6 +35,7 @@ files.each do |name|
     dump_file.each do |d|
       p d
       Net::SCP.start(host, id, options) do |scp|
+        p "#{local_dir}/#{name}/#{d}"
         scp.upload!("#{local_dir}/#{name}/#{d}",remote_dir)
       end
     end
