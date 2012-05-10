@@ -40,7 +40,11 @@ files.each do |name|
           p "#{local_dir}/#{name}/#{d}"
           scp.upload!("#{local_dir}/#{name}/#{d}",remote_dir)
         end
+        FileUtils.rm("#{local_dir}/#{name}/#{d}")
+        FileUtils
       end
     end
   end
+  FileUtils.rmdir("#{local_dir}/#{name}")
 end
+
