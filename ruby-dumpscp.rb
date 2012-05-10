@@ -41,7 +41,6 @@ files.each do |name|
           scp.upload!("#{local_dir}/#{name}/#{d}",remote_dir)
         end
         FileUtils.rm("#{local_dir}/#{name}/#{d}")
-        FileUtils
       end
     end
   end
