@@ -34,7 +34,7 @@ files.each do |name|
   if FileTest::directory?("#{local_dir}/#{name}") && name != ".." && name != "."
     dump_file = Dir::entries("#{local_dir}/#{name}")
     dump_file.each do |d|
-      if File.extname(name) == ".pcap"
+      if File.extname(d) == ".pcap"
         p d
         Net::SCP.start(host, id, options) do |scp|
           p "#{local_dir}/#{name}/#{d}"
