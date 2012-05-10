@@ -1,5 +1,8 @@
 require 'net/ssh'
 require 'net/scp'
+
+module FileUtils
+
 if ARGV[0][ARGV[0].size-1] == "/"
   local_dir = ARGV[0].chop
 end
