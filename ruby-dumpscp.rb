@@ -37,7 +37,8 @@ if pcap_file_count(files) > 1
       if new_dir_name == Time.now.strftime("%Y%m%d") || pcap_file_count(latest_files) <= 1
         #DO NOTHING(A FILE IN USE)
       else
-        Dir::mkdir("#{local_dir}/#{new_dir_name}", 0776) unless FileTest.exist?("#{local_dir}/#{new_dir_name}")
+        Dir::mkdir("#{local_dir}/#{new_dir_name}", 0777) unless FileTest.exist?("#{local_dir}/#{new_dir_name}")
+        FileUtils.chmod(0777,"#{local_dir}/#{new_dir_name}"),
         File.rename("#{local_dir}/#{name}", "#{local_dir}/#{new_dir_name}/#{name}")
         latest_files = Dir::entries(local_dir)
       end
