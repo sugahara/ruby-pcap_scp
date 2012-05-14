@@ -4,7 +4,7 @@ require 'net/scp'
 require 'fileutils'
 
 #現在のpcapファイルの数をかぞえるメソッド
-def pcap_file_cont(files)
+def pcap_file_count(files)
   count = 0
   files.each do |name|
     if File.extname(name)==".pcap"
