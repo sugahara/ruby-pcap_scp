@@ -38,6 +38,7 @@ if pcap_file_count(files) > 1
     #最新の（おそらくダンプ中の）pcapファイル名を取得
     if File.extname(name) == ".pcap"
      if latest_time < File.atime("#{local_dir}/#{name}")
+       latest_time = File.atime("#{local_dir}/#{name}")
        @latest_file = name
      end
     end
