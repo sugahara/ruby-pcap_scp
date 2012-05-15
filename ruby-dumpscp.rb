@@ -38,14 +38,14 @@ if pcap_file_count(files) > 1
     #最新の（おそらくダンプ中の）pcapファイル名を取得
     if File.extname(name) == ".pcap"
      if latest_time < File.atime("#{local_dir}/#{name}")
-       latest_file = name
+       @latest_file = name
      end
     end
   end
   #ダンプ中のファイルを残して新しいディレクトリに移動
   files.each do |name|
     if File.extname(name) == ".pcap"
-      if name != latest_file
+      if name != @latest_file
         new_dir_name = name.split("_")[2][0...8]
         Dir::mkdir("#{local_dir}/#{new_dir_name}", 0777) unless FileTest.exist?("#{local_dir}/#{new_dir_name}")
         FileUtils.chmod(0777,"#{local_dir}/#{new_dir_name}")
