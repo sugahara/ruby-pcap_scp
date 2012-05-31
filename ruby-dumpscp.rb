@@ -47,6 +47,7 @@ if pcap_file_count(files) > 1
      if latest_time < File.atime("#{local_dir}/#{name}")
        latest_time = File.atime("#{local_dir}/#{name}")
        @latest_file = name
+       puts "dumping file is #{@latest_file}"
      end
     end
   end
@@ -69,11 +70,11 @@ files.each do |name|
     dump_file = Dir::entries("#{local_dir}/#{name}")
     dump_file.each do |d|
       if File.extname(d) == ".pcap"
-        p d
         Net::SCP.start(host, id, options) do |scp|
-          p "#{local_dir}/#{name}/#{d}"
+          p "uploading file #{local_dir}/#{name}/#{d}"
           scp.upload!("#{local_dir}/#{name}/#{d}",remote_dir)
         end
+        puts "detele file #{local_dir}/#{name}/#{d}"
         FileUtils.rm("#{local_dir}/#{name}/#{d}")
       end
     end
