@@ -2,8 +2,10 @@
 ## 
 ## Pcap file transmitter using scp in Ruby
 ## usage: ruby ruby-dumpscp.rb [local_dir] [remote_dir] [host] [username] [ssh_key_path] [pass phrase]
-## 
-## Copyright (C) 2008 Jun SUGAHARA All Rights Reserved.
+##
+## WARNING : LOCAL FILES ARE DELETED AFTER THE COMPLETION OF TRANSMITTING. 
+##
+##Copyright (C) 2012 Jun SUGAHARA All Rights Reserved.
 ##
 
 require 'net/ssh'
