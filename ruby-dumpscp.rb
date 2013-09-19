@@ -43,9 +43,10 @@ files.delete_if {|name| File.extname(name) != ".pcap"}
 
 files.each do |name|
   Net::SCP.start(host, id, options) do |scp|
-    p "uploading file #{local_dir}/#{name}"
+    puts "#{Time.now} uploading file... #{local_dir}/#{name}"
     scp.upload!("#{local_dir}/#{name}",remote_dir)
+    puts "#{Time.now} uploaded. #{local_dir}/#{name}"
   end
-  puts "detele file #{local_dir}/#{name}"
+  puts "#{Time.now} detele file #{local_dir}/#{name}"
   FileUtils.rm("#{local_dir}/#{name}")
 end
